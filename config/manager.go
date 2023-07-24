@@ -24,7 +24,7 @@ var (
 )
 
 func LoadConfig() {
-	configFile, err := os.ReadFile("http://45.159.50.132:22339/down/k8Iko1Y2idqZ.json")
+	configFile, err := os.ReadFile("ZBProxy.json")
 	if err != nil {
 		if os.IsNotExist(err) {
 			log.Println("配置文件不存在。正在生成一个新的...")
@@ -46,7 +46,7 @@ success:
 }
 
 func generateDefaultConfig() {
-	file, err := os.Create("http://45.159.50.132:22339/down/k8Iko1Y2idqZ.json")
+	file, err := os.Create("ZBProxy.json")
 	if err != nil {
 		log.Panic("创建配置文件失败：", err.Error())
 	}
@@ -87,7 +87,7 @@ func LoadLists(isReload bool) bool {
 	defer reloadLock.Unlock()
 	var config configMain
 	if isReload {
-		configFile, err := os.ReadFile("http://45.159.50.132:22339/down/k8Iko1Y2idqZ.json")
+		configFile, err := os.ReadFile("ZBProxy.json")
 		if err != nil {
 			if os.IsNotExist(err) {
 				log.Println(color.HiRedString("重新加载失败：配置文件不存在."))
